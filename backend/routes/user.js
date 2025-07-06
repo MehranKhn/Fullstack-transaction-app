@@ -1,6 +1,6 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
-const key = require("../config");
+const {jwtSecret} = require("../config");
 const { User,Account } = require("../db"); // assuming db.js exports { User }
 const userRouter = express.Router();
 const z = require("zod");
@@ -71,7 +71,7 @@ userRouter.post('/signin',async (req,res)=>{
     })
    }
 
-    const token=jwt.sign({userId:user._id},key,{expiresIn:'3m'});
+    const token=jwt.sign({userId:user._id},jwtSecret,{expiresIn:'3m'});
     res.status(200).json({
       userId:user._id,
       token:token

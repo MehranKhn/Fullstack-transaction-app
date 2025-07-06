@@ -1,4 +1,4 @@
-const key=require('./config');
+const {jwtSecret}=require('./config');
 const jwt=require('jsonwebtoken')
 
 function authMiddleware(req,res,next){
@@ -11,7 +11,7 @@ function authMiddleware(req,res,next){
     const token=authHeader.split(' ')[1];
 
     try{
-        const decoded=jwt.verify(token,key);
+        const decoded=jwt.verify(token,jwtSecret);
         if(decoded.userId){
 
             req.userId=decoded.userId;
