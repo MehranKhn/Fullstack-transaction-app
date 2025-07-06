@@ -1,5 +1,5 @@
-const mongoose=require('mongoose');
-import {mongoURI} from './config'
+const mongoose = require('mongoose');
+const { mongoURI } = require('./config');
 mongoose.connect(mongoURI);
 
 const usersSchema=new mongoose.Schema({
