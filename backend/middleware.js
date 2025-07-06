@@ -1,5 +1,5 @@
-const key=require('./config');
-const jwt=require('jsonwebtoken')
+import key from './config';
+import { verify } from 'jsonwebtoken';
 
 function authMiddleware(req,res,next){
     const authHeader=req.headers.authorization;
@@ -11,7 +11,7 @@ function authMiddleware(req,res,next){
     const token=authHeader.split(' ')[1];
 
     try{
-        const decoded=jwt.verify(token,key);
+        const decoded=verify(token,key.jwtSecret);
         if(decoded.userId){
 
             req.userId=decoded.userId;
@@ -26,4 +26,4 @@ function authMiddleware(req,res,next){
     }
 }
 
-module.exports=authMiddleware;
+export default authMiddleware;

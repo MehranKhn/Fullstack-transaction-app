@@ -1,6 +1,6 @@
 const mongoose=require('mongoose');
-
-mongoose.connect('mongodb+srv://Mehrankhan:Sahil12@cluster0.fie9jfc.mongodb.net/paytm');
+import {mongoURI} from './config'
+mongoose.connect(mongoURI);
 
 const usersSchema=new mongoose.Schema({
     name:{
