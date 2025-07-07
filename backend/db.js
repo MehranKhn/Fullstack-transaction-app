@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const { mongoURI } = require('./config');
-mongoose.connect(mongoURI);
+mongoose.connect(mongoURI,{
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
 const usersSchema=new mongoose.Schema({
     name:{
