@@ -4,6 +4,7 @@ import Fotter from "../components/fotter"
 import { useEffect } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export default function Signin(){
 const navigate=useNavigate();
@@ -13,7 +14,7 @@ useEffect(() => {
       if (!token) return;
   
       try {
-        const res = await axios.get('http://localhost:3000/api/v1/user/me', {
+        const res = await axios.get(`${API_BASE_URL}/api/v1/user/me`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

@@ -9,11 +9,12 @@ export default function Transfer(){
     const inputRef=useRef();
     const navigate=useNavigate()
     const[transferMessage,setTransferMessage]=useState('');
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
         async function initiateTransfer(userId) {
             const token=localStorage.getItem('token');
             try{
-                const response=await axios.post('http://localhost:3000/api/v1/account/transfer',{
+                const response=await axios.post(`${API_BASE_URL}/api/v1/account/transfer`,{
                     to:userId,
                     amount:inputRef.current.value,
                 },{

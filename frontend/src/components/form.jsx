@@ -2,6 +2,7 @@ import { useRef, useState } from "react"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Auth from "./authenticate";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export default function Form({type,buttonText}){
     const[name,setname]=useState('');
@@ -18,7 +19,7 @@ export default function Form({type,buttonText}){
             async function handleSubmit(e){
                  e.preventDefault();
                 try{
-                    const response= await axios.post('http://localhost:3000/api/v1/user/signup',{
+                    const response= await axios.post(`${API_BASE_URL}/api/v1/user/signup`,{
                          name:name,
                          email:email,
                          password:password

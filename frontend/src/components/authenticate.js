@@ -1,8 +1,9 @@
 import axios from "axios";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export default async function Auth({email,password,setSignupMessage,setShowMessage,navigate}){
     try{
-        const response=await axios.post('http://localhost:3000/api/v1/user/signin',{
+        const response=await axios.post(`${API_BASE_URL}/api/v1/user/signin`,{
          password,email
         });
          

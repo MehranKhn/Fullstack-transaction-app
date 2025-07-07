@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export default function FilterBar(){
     const [users,setUsers]=useState([]);
     const [error,setError]=useState('');
@@ -9,7 +11,7 @@ export default function FilterBar(){
 
     async function getUsers(filter){
         try{
-            const response=await axios.get('http://localhost:3000/api/v1/user/bulk',{
+            const response=await axios.get(`${API_BASE_URL}/api/v1/user/bulk`,{
             params: {
                 filter: filter,
                 userId:localStorage.getItem('userId')
